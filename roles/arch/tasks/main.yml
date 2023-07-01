@@ -1,0 +1,34 @@
+---
+- name: Install GnuPG tools
+  become: true
+  pacman:
+    name:
+      - gnupg
+      - hopenpgp-tools
+
+- name: Install pinentry
+  aur:
+    name: pinentry-rofi
+
+- name: Link pinentry
+  become: true
+  file:
+    src: "/usr/bin/pinentry-rofi"
+    dest: "/usr/bin/pinentry-proxy"
+    state: link
+
+- name: Install SmartCard tools
+  become: true
+  pacman:
+    name:
+      - pcsclite
+      - opensc
+      - ccid
+      - yubikey-personalization
+
+- name: Enable SmartCard service
+  become: true
+  systemd:
+    name: pcscd
+    enabled: true
+    state: started

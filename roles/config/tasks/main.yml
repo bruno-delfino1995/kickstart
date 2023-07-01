@@ -1,0 +1,8 @@
+---
+- name: Install dotfiles
+  include_tasks:
+    file: dotfiles.yml
+
+- name: Import public key
+  command: gpg --recv-keys '69755601B3AFF040439A1BB1F4EF91F02AACA9DF'
+  changed_when: false

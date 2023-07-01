@@ -1,0 +1,12 @@
+---
+- name: Setup gnupg config
+  hosts: all
+  tasks:
+    - name: Install software for Arch
+      include_role:
+        name: arch
+      when: ansible_os_family == "Archlinux"
+
+    - name: Install config for user
+      include_role:
+        name: config

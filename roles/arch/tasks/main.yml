@@ -14,7 +14,7 @@
   become: true
   file:
     src: "/usr/bin/pinentry-rofi"
-    dest: "/usr/bin/pinentry-proxy"
+    dest: "/usr/local/bin/pinentry-proxy"
     state: link
 
 - name: Install SmartCard tools

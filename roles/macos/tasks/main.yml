@@ -1,0 +1,25 @@
+---
+- name: Install Homebrew
+  include_tasks:
+    file: brew.yml
+
+- name: Install GnuPG tools
+  homebrew:
+    name:
+      - gnupg
+      - hopenpgp-tools
+
+- name: Install pinentry
+  homebrew:
+    name: pinentry-mac
+
+- name: Link pinentry
+  become: true
+  file:
+    src: "/usr/local/bin/pinentry-mac"
+    dest: "/usr/local/bin/pinentry-proxy"
+    state: link
+
+- name: Install SmartCard tools
+  homebrew:
+    name: yubikey-personalization

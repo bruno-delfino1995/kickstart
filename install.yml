@@ -7,6 +7,11 @@
         name: arch
       when: ansible_os_family == "Archlinux"
 
+    - name: Install software for MacOS
+      include_role:
+        name: macos
+      when: ansible_os_family == "Darwin"
+
     - name: Install config for user
       include_role:
         name: config

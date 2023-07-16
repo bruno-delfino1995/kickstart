@@ -1,4 +1,9 @@
 ---
+- name: Install AUR helper
+  aur:
+    name: paru
+    use: makepkg
+
 - name: Install GnuPG tools
   become: true
   pacman:

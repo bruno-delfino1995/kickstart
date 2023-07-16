@@ -1,7 +1,13 @@
 ---
-- name: Install Homebrew
-  include_tasks:
-    file: brew.yml
+- name: Check brew existence
+  stat:
+    path: /usr/local/bin/brew
+  register: homebrew_check
+
+- name: Installing Homebrew
+  shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  when:
+    - not homebrew_check.stat.exists
 
 - name: Install GnuPG tools
   homebrew:

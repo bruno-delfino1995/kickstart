@@ -1,0 +1,9 @@
+* Kickstart my +heart+ environment
+
+#+begin_quote
+A bootstrap used to set up my machine before I install everything else
+#+end_quote
+
+I've yet to find an optimal solution for managing configurations for every operational system I use (ArchLinux, MacOS, Windows). Since there are just a few tools I need to start working on, this will be my only public configuration repository.
+
+All I need to start is a minimal shell, a gitconfig, a package manager of choice, and SSH backed by GnuPG from Yubikey. So, after running ~./setup~, it'll place all the configurations correctly for those!

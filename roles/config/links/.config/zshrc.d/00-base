@@ -1,0 +1,17 @@
+# vim: set ft=sh:
+
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+# Ignore entries starting with spaces
+setopt HIST_IGNORE_SPACE
+
+zstyle :compinstall filename "$HOME/.zshrc"
+
+autoload -Uz compinit colors promptinit
+compinit
+colors
+promptinit
+
+bindkey -e

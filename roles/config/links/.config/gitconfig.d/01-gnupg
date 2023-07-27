@@ -1,4 +1,5 @@
 # vim: set ft=gitconfig:
+
 [user]
 	signingkey = 69755601B3AFF040439A1BB1F4EF91F02AACA9DF
 [commit]

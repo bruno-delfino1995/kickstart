@@ -1,0 +1,5 @@
+# vim: set ft=sh:
+
+# Connect ssh-agent to gpg-agent
+export SSH_AGENT_PID=""
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"

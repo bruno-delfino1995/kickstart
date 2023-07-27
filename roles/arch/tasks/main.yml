@@ -37,3 +37,13 @@
     name: pcscd
     enabled: true
     state: started
+
+- name: Install ZSH
+  become: true
+  pacman:
+    name: zsh
+
+- name: Install shell prompt
+  become: true
+  pacman:
+    name: starship

@@ -29,3 +29,11 @@
 - name: Install SmartCard tools
   homebrew:
     name: yubikey-personalization
+
+- name: Install ZSH
+  homebrew:
+    name: zsh
+
+- name: Install shell prompt
+  homebrew:
+    name: starship

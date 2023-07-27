@@ -40,6 +40,13 @@
   loop_control:
     label: "{{ file }}"
 
+
+- name: Copy base git index
+  copy:
+    src: "{{ role_path }}/tmpls/.config/gitconfig.d/00-index"
+    dest: "$HOME/.config/gitconfig.d/00-index"
+    force: false
+
 - name: Import public key
   command: gpg --recv-keys '69755601B3AFF040439A1BB1F4EF91F02AACA9DF'
   changed_when: false

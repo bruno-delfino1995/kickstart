@@ -1,0 +1,4 @@
+# vim: set ft=gitconfig:
+
+[include]
+	path = "01-gnupg"

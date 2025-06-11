@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+IFS=$'\n\t'
+
+DIR=$(realpath "$(dirname "$0")")
+
+cd "$DIR" || exit 1
+
+module="$1"
+
+if [[ -e "requirements.yml" ]]; then
+	ansible-galaxy install -r requirements.yml > /dev/null
+fi
+
+if [[ -n "$module" ]]; then
+	ansible-playbook -K playbook.yml --extra-vars="modules=['$module']"
+else
+	ansible-playbook -K playbook.yml
+fi

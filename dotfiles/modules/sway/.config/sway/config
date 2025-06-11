@@ -1,0 +1,19 @@
+font pango:JuliaMono 10
+
+set $mod Mod4
+set $alt Mod1
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+include config.d/*
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+focus_follows_mouse no
+
+bar {
+	swaybar_command waybar
+}

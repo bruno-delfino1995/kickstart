@@ -1,0 +1,8 @@
+{
+	"buffer_font_size": 16,
+	"buffer_font_family": "JuliaMono, Menlo, Monaco, 'Courier New', monospace",
+	"vim_mode": true,
+	"enable_language_server": true,
+	"preferred_line_length": 80,
+	"hover_popover_enabled": true
+}

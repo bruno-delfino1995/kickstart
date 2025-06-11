@@ -1,0 +1,54 @@
+---
+- name: Install ZSH
+  become: true
+  pacman:
+    name: zsh
+
+- name: Install ZSH plugin manager
+  become: true
+  pacman:
+    name: sheldon
+
+- name: Install shell prompt
+  become: true
+  pacman:
+    name: starship
+
+- name: Install file helpers
+  become: true
+  pacman:
+    name:
+      - fd
+      - fzf
+      - ripgrep
+      - ranger
+
+- name: Install terminal multiplexer
+  become: true
+  pacman:
+    name: tmux
+
+- name: Install multiplexer configurator
+  aur:
+    name: tmuxinator
+
+- name: Install env vars autoloader
+  become: true
+  pacman:
+    name: direnv
+
+- name: Install smarter cd
+  become: true
+  pacman:
+    name: zoxide
+
+- name: Install usage helper
+  become: true
+  pacman:
+    name: tldr
+
+- name: Place sysfiles
+  become: true
+  copy:
+    src: sysfiles/
+    dest: /

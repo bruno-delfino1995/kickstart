@@ -1,0 +1,53 @@
+---
+- name: Install NetworkManager
+  become: true
+  pacman:
+    name: networkmanager
+
+- name: Install wireless daemon
+  become: true
+  pacman:
+    name: iwd
+
+- name: Enable NetworkManager
+  become: true
+  systemd:
+    name: NetworkManager
+    enabled: true
+    state: started
+
+- name: Install generic tools
+  become: true
+  pacman:
+    name:
+      - bind-tools
+      - ngrep
+      - ldns
+
+- name: Enable systemd-timesyncd
+  become: true
+  systemd:
+    name: systemd-timesyncd
+    enabled: true
+    state: started
+
+- name: Enable NTP
+  become: true
+  command: timedatectl set-ntp true
+  changed_when: false
+
+- name: Install OpenVPN
+  become: true
+  pacman:
+    name: openvpn
+
+- name: Install NetworkManager VPN Helper
+  become: true
+  pacman:
+    name: networkmanager-openvpn
+
+- name: Copy sysfiles
+  become: true
+  copy:
+    src: sysfiles/
+    dest: /

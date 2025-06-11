@@ -1,0 +1,13 @@
+# vim: set ft=gitconfig:
+
+[alias]
+	commend = commit --amend --no-edit
+	it = !git init && git commit -m \"Initial commit\" --allow-empty
+	shorty = status --short --branch
+	unstage = reset HEAD
+	ignore = update-index --skip-worktree
+	unignore = update-index --no-skip-worktree
+	ls-untracked = !bash -c 'diff -n <(git status --untracked-files=no --short | cut -d\" \" -f 2-) <(git status --untracked-files=normal --short | cut -d\" \" -f 2-) | tail +2'
+	permission-reset = !git diff -p -R --no-ext-diff --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
+[core]
+	excludesfile = ~/.gitignore

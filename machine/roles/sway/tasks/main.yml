@@ -1,0 +1,53 @@
+---
+- name: Install base sway packages
+  become: true
+  pacman:
+    name:
+      - wayland
+      - xorg-xwayland
+      - sway
+      - swayidle
+      - swaylock
+      - swaybg
+      - waybar
+      - wl-clipboard
+      - xdg-desktop-portal-gtk
+      - xdg-desktop-portal-wlr
+
+- name: Install application autostarter
+  become: true
+  pacman:
+    name: dex
+
+- name: Install display config daemon
+  become: true
+  pacman:
+    name: kanshi
+
+- name: Install display config GUI
+  aur:
+    name: wdisplays
+
+- name: Install screenshot helper
+  aur:
+    name: grimshot
+
+- name: Install screen color thermostat
+  become: true
+  pacman:
+    name: gammastep
+
+- name: Install logout widget
+  aur:
+    name: wlogout
+
+- name: Install network helper
+  become: true
+  pacman:
+    name: network-manager-applet
+
+- name: Copy sysfiles
+  become: true
+  copy:
+    src: sysfiles/
+    dest: /

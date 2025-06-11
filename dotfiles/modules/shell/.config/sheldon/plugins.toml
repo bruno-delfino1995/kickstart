@@ -1,0 +1,23 @@
+shell = "zsh"
+
+[plugins]
+
+[plugins.lib]
+github = 'ohmyzsh/ohmyzsh'
+use = ['lib/*.zsh']
+
+[plugins.fzf]
+github = 'ohmyzsh/ohmyzsh'
+use = ['plugins/fzf/*.zsh']
+
+[plugins.syntax-highlight]
+github = 'zsh-users/zsh-syntax-highlighting'
+
+[plugins.suggestions]
+github = 'zsh-users/zsh-autosuggestions'
+
+[plugins.completions]
+github = 'zsh-users/zsh-completions'
+
+[plugins.history-search]
+github = 'zsh-users/zsh-history-substring-search'

@@ -1,0 +1,43 @@
+# VCS tools
+.jj/
+
+# OS specific
+.DS_Store
+
+# Local untracked files
+*.ignore
+
+# Environment setup
+.mise.local.toml
+.envrc
+.env
+
+# Docker
+docker-compose.override.yml
+
+# Editor
+.editorconfig
+
+## VSCode
+.vscode/
+
+## VIM
+*.swp
+
+## Emacs
+*~
+
+## IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Language Servers
+
+## Elixir
+.elixir_ls/
+
+## Scala
+.metals/
+.bloop/

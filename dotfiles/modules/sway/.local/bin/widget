@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+NAME=$1
+
+WINDOW=$(eww windows | grep "${NAME}")
+
+if [[ "$WINDOW" == "*${NAME}" ]]; then
+	eww close "$NAME"
+else
+	eww open "$NAME"
+fi

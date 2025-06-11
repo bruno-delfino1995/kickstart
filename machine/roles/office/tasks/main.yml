@@ -1,0 +1,26 @@
+---
+- name: Install avahi
+  become: true
+  pacman:
+    name:
+      - avahi
+      - nss-mdns
+
+- name: Enable avahi
+  become: true
+  systemd:
+    name: avahi-daemon
+    enabled: true
+    state: started
+
+- name: Install printing daemon
+  become: true
+  pacman:
+    name: cups
+
+- name: Enable printing socket
+  become: true
+  systemd:
+    name: cups.socket
+    enabled: true
+    state: started

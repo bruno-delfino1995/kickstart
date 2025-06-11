@@ -1,0 +1,63 @@
+{
+	"position": "bottom",
+	"height": 30,
+	"modules-left": ["sway/workspaces"],
+	"modules-center": ["sway/window"],
+	"modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "clock", "tray"],
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{name}",
+		"format-icons": {
+			"urgent": "",
+			"focused": "",
+			"default": ""
+		}
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"tray": {
+		"icon-size": 16,
+		"spacing": 10
+	},
+	"clock": {
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}",
+		"format": "{:%Y-%m-%d %H:%M}"
+	},
+	"cpu": {
+		"format": "{usage}% ",
+		"tooltip": true
+	},
+	"memory": {
+		"format": "{}% "
+	},
+	"network": {
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	"pulseaudio": {
+		"scroll-step": 5,
+		"format": "{volume}% {icon} {format_source}",
+		"format-bluetooth": "{volume}% {icon} {format_source}",
+		"format-bluetooth-muted": " {icon} {format_source}",
+		"format-muted": " {format_source}",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"headset": "",
+			"default": ["", "", ""]
+		},
+		"on-click": "pavucontrol"
+	}
+}
+

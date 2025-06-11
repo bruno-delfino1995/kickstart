@@ -1,0 +1,27 @@
+---
+- name: Install GNUPG
+  become: true
+  pacman:
+    name: gnupg
+
+- name: Install SmartCard tools
+  become: true
+  pacman:
+    name:
+      - opensc
+      - ccid
+
+- name: Enable SmartCard service
+  become: true
+  systemd:
+    name: pcscd
+    enabled: true
+    state: started
+
+- name: Install pinentry
+  aur:
+    name: pinentry-rofi
+
+- name: Import public key
+  command: gpg --recv-keys '{{ user.gpg }}'
+  changed_when: false

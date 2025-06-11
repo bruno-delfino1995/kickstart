@@ -1,0 +1,41 @@
+---
+- name: Install essential packages
+  become: true
+  pacman:
+    name:
+      - openssh
+      - rsync
+      - curl
+      - wget
+      - tree
+      - htop
+      - zip
+      - unzip
+      - man-db
+      - man-pages
+      - moreutils
+      - xdg-user-dirs
+
+- name: Install restore tool
+  aur:
+    name: timeshift
+
+- name: Install kernel manager
+  aur:
+    name: kmon
+
+- name: Install tracer
+  become: true
+  pacman:
+    name: strace
+
+- name: Install mounting helper
+  become: true
+  pacman:
+    name: udisks2
+
+- name: Copy sysfiles
+  become: true
+  copy:
+    src: sysfiles/
+    dest: /

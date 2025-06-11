@@ -1,0 +1,22 @@
+# vim: set ft=sh:
+
+# Trick to run aliases with sudo
+alias sudo='sudo '
+alias ls='ls --color=auto'
+alias se='ls /usr/bin | grep'
+
+alias pacrepo='reflector --protocol https --age 48 --latest 100 --fastest 50 --save /etc/pacman.d/mirrorlist'
+alias pacu='pacman -Syu --noconfirm'
+alias yayu='yay -Syua --noconfirm'
+alias pacls="pacman -Qqe | fzf-tmux -m --preview 'pacman -Qi {1}' > /dev/null"
+alias pacunlock="rm /var/lib/pacman/db.lck"
+
+alias mux="tmuxinator"
+
+alias k="kubectl"
+alias kc="kct"
+alias kn="kubens"
+alias kx="kubectx"
+alias kt="kubetail"
+
+alias gr='cd $(git rev-parse --show-toplevel)'

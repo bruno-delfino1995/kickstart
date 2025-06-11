@@ -1,0 +1,18 @@
+# vim: set ft=gitconfig:
+
+[diff]
+	tool = difftastic
+	external = difft --display inline
+
+[difftool]
+	prompt = false
+
+[difftool "difftastic"]
+	cmd = difft --display inline "$LOCAL" "$REMOTE"
+
+[pager]
+	difftool = true
+
+[alias]
+	dow = show --ext-diff
+	dog = log -p --ext-diff

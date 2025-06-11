@@ -1,0 +1,35 @@
+- name: Find directories
+  find:
+    paths: "{{ src }}"
+    file_type: directory
+    hidden: true
+    recurse: true
+    patterns: "*"
+  register: directories
+
+- name: Find files
+  find:
+    paths: "{{ src }}"
+    file_type: file
+    hidden: true
+    recurse: true
+    patterns: "*"
+  register: files
+
+- name: Create directories
+  file:
+    path: "{{ dest }}/{{ item }}"
+    state: directory
+  loop: "{{ directories.files | flatten(levels=1) | map(attribute='path') | map('regex_replace', '^' + src + '/(.+)$', '\\1') }}"
+
+- name: Link files
+  file:
+    force: true
+    state: link
+    src: "{{ item }}"
+    dest: "{{ dest }}/{{ file }}"
+  loop: "{{ files.files | flatten(levels=1) | map(attribute='path') }}"
+  vars:
+    file: "{{ item | regex_replace('^' + src + '/(.+)$', '\\1') }}"
+  loop_control:
+    label: "{{ file }}"

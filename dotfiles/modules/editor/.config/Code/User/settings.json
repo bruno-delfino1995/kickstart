@@ -1,0 +1,17 @@
+{
+	"update.mode": "manual",
+	"workbench.colorTheme": "Catppuccin Macchiato",
+	"gitlens.codeLens.enabled": false,
+	"editor.fontFamily": "JuliaMono, Menlo, Monaco, 'Courier New', monospace",
+	"editor.fontSize": 16,
+	"window.zoomLevel": 1,
+	"editor.rulers": [80, 100, 120],
+	"vim.useSystemClipboard": true,
+	"workbench.startupEditor": "none",
+	"editor.lineNumbers": "relative",
+	"terminal.integrated.defaultProfile.osx": "zsh",
+	"editor.minimap.enabled": false,
+	"terminal.external.osxExec": "iTerm.app",
+	"terminal.external.linuxExec": "wezterm",
+	"terminal.integrated.fontSize": 16
+}

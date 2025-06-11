@@ -1,0 +1,10 @@
+---
+- name: Setup machine
+  hosts: all
+  tasks:
+    - name: Install modules
+      include_role:
+        name: "{{ module }}"
+      loop: "{{ modules }}"
+      loop_control:
+        loop_var: module

@@ -1,0 +1,4 @@
+# Ansible
+*.retry
+vendor/
+host_vars/localhost.yml

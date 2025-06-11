@@ -1,0 +1,29 @@
+---
+- name: Install official fonts
+  become: true
+  pacman:
+    name:
+      - ttf-dejavu
+      - ttf-fira-mono
+      - noto-fonts
+      - noto-fonts-emoji
+      - noto-fonts-extra
+      - adobe-source-code-pro-fonts
+      - otf-font-awesome
+
+- name: Install community fonts
+  aur:
+    name:
+      - lexend-fonts-git
+      - ttf-juliamono
+      - ttf-line-awesome
+
+- name: Install editor
+  become: true
+  pacman:
+    name: fontforge
+
+- name: Install conversion tool
+  become: true
+  pacman:
+    name: woff2

@@ -1,0 +1,7 @@
+# vim: set ft=sh:
+
+# Default programs
+export EDITOR="nvim"
+export TERMINAL="wezterm"
+export FILE="ranger"
+

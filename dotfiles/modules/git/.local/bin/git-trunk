@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+BRANCH=$(git branch --list 'master' --list 'main' --format='%(refname:short)' | head -n1)
+
+case "${1:-1}" in
+	--no-switch | -n)
+		echo "$BRANCH"
+		;;
+	*)
+		git switch "$BRANCH"
+		;;
+esac

@@ -1,0 +1,10 @@
+# vim: set ft=gitconfig:
+
+[include]
+	path = "01-gnupg"
+	path = "02-remote"
+	path = "03-merge"
+	path = "04-log"
+	path = "05-commit"
+	path = "06-diff"
+	path = "90-company"

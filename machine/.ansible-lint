@@ -1,0 +1,6 @@
+---
+skip_list:
+  - meta-no-info
+  - experimental
+  - fqcn-builtins
+  - latest[git]

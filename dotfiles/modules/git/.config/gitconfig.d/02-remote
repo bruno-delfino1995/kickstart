@@ -1,0 +1,13 @@
+# vim: set ft=gitconfig:
+
+[alias]
+	please = push --force-with-lease
+	remove-gone = !git branch -D `git branch -v | grep '\\[gone\\]' | awk '{print($1)}'`
+[pull]
+	rebase = true
+[push]
+	default = simple
+	useForceIfIncludes = true
+	autoSetupRemote = true
+[fetch]
+	prune = true

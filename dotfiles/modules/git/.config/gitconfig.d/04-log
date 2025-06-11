@@ -1,0 +1,6 @@
+# vim: set ft=gitconfig:
+
+[alias]
+	grog = log --graph --decorate --format=format:\"%C(bold blue)%h%C(bold yellow)%d%n%C(white)%s%n%C(white)%an at %C(bold green)(%ar)%n\"
+	slog = log --oneline --first-parent --no-merges
+	last = log -1 HEAD

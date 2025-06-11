@@ -1,0 +1,53 @@
+---
+- name: Install Docker
+  become: true
+  pacman:
+    name:
+      - docker
+      - docker-compose
+
+- name: Enable Docker
+  become: true
+  systemd:
+    name: docker
+    enabled: true
+    state: started
+
+- name: Add user to docker group
+  become: true
+  user:
+    name: "{{ user.name }}"
+    groups: docker
+    append: true
+
+# - name: Install AWS CLI
+#   become: true
+#   pacman:
+#     name: aws-cli
+#
+# - name: Install GCP CLI
+#   aur:
+#     name: google-cloud-sdk
+
+- name: Install Postman
+  aur:
+    name: postman-bin
+
+- name: Install Rust toolchain installer
+  become: true
+  pacman:
+    name: rustup
+
+- name: Install latest stable Rust
+  command: rustup toolchain install stable
+  changed_when: false
+
+- name: Install Erlang
+  become: true
+  pacman:
+    name: erlang
+
+- name: Install Elixir
+  become: true
+  pacman:
+    name: elixir

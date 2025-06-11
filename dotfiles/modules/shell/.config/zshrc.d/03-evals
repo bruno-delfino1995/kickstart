@@ -1,0 +1,10 @@
+# vim: set ft=sh:
+
+# Shell plugin manager
+eval "$(sheldon source)"
+
+# Smarter cd command
+eval "$(zoxide init zsh --cmd cd)"
+
+# Environment setup helper
+eval "$(mise activate zsh)"

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+REV="$1"
+
+if [ -z "$REV" ]; then
+  base=$(git oldest-ancestor)
+  if [ -z "$base" ]; then
+    base=master
+  fi
+
+  if [ "$(git branch --show-current)" == "master" ]; then
+    REV="master"
+  else
+    REV="$base..HEAD"
+  fi
+fi
+
+git log --format=%B --reverse "$REV"

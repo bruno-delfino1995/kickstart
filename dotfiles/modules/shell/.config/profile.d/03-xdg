@@ -1,0 +1,6 @@
+# vim: set ft=sh:
+
+# XDG config
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CURRENT_DESKTOP="sway"
+

@@ -1,0 +1,54 @@
+---
+- name: Setup user config
+  hosts: all
+  tasks:
+    - name: Clear cached password
+      ansible.builtin.command: sudo -k
+      changed_when: false
+
+    - name: Try password out
+      register: result
+      ignore_errors: true
+      become: true
+      changed_when: false
+      timeout: 1
+      ansible.builtin.command: echo "Password is correct"
+
+    - name: Check if password worked
+      when: result is failed or result.rc is not defined or result.rc != 0
+      ansible.builtin.fail:
+        msg: "Invalid password"
+
+    - name: Gather modules
+      when: module is undefined
+      block:
+        - name: Find all modules
+          find:
+            paths: "{{ playbook_dir }}/modules"
+            depth: 1
+            file_type: directory
+          register: modules
+        - name: Set directories
+          set_fact:
+            directories: "{{ modules.files | flatten(levels=1) | map(attribute='path') }}"
+
+    - name: Validate module
+      when: module is defined
+      block:
+        - name: Check module
+          stat:
+            path: "{{ playbook_dir }}/modules/{{ module }}"
+          register: dir
+        - name: Fail if undefined
+          when: dir.stat.exists == false
+          fail:
+            msg: "The requested module doesn't exist"
+        - name: Set directories
+          set_fact:
+            directories: ["{{ dir.stat.path }}"]
+
+    - name: Install modules
+      include_tasks: "modules/{{ module }}/{{ kind }}.yml"
+      loop: "{{ directories }}"
+      loop_control:
+        loop_var: directory

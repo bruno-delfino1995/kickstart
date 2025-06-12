@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -eo pipefail
-IFS=$'\n\t'
-
-ansible-galaxy install -r requirements.yml > /dev/null
-ansible-playbook -K install.yml

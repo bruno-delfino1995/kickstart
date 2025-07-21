@@ -46,9 +46,3 @@
   become: true
   pacman:
     name: tldr
-
-- name: Place sysfiles
-  become: true
-  copy:
-    src: sysfiles/
-    dest: /

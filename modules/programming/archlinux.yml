@@ -20,14 +20,14 @@
     groups: docker
     append: true
 
-# - name: Install AWS CLI
-#   become: true
-#   pacman:
-#     name: aws-cli
-#
-# - name: Install GCP CLI
-#   aur:
-#     name: google-cloud-sdk
+- name: Install AWS CLI
+  become: true
+  pacman:
+    name: aws-cli
+
+- name: Install GCP CLI
+  aur:
+    name: google-cloud-sdk
 
 - name: Install Postman
   aur:

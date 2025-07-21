@@ -45,9 +45,3 @@
   become: true
   pacman:
     name: network-manager-applet
-
-- name: Copy sysfiles
-  become: true
-  copy:
-    src: sysfiles/
-    dest: /

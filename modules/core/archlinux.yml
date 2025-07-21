@@ -33,9 +33,3 @@
   become: true
   pacman:
     name: udisks2
-
-- name: Copy sysfiles
-  become: true
-  copy:
-    src: sysfiles/
-    dest: /

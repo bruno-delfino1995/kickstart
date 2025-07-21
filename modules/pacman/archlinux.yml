@@ -36,9 +36,3 @@
     name: reflector.timer
     enabled: true
     state: started
-
-- name: Place sysfiles
-  become: true
-  copy:
-    src: sysfiles/
-    dest: /

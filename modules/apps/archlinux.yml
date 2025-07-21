@@ -39,9 +39,3 @@
       - thunar-volman
       - gvfs
       - file-roller
-
-- name: Copy sysfiles
-  become: true
-  copy:
-    src: sysfiles/
-    dest: /

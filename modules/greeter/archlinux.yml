@@ -12,9 +12,3 @@
   systemd:
     name: greetd
     enabled: true
-
-- name: Place sysfiles
-  become: true
-  copy:
-    src: sysfiles/
-    dest: /

@@ -1,5 +1,0 @@
----
-- name: Install terminal editor
-  become: true
-  pacman:
-    name: neovim

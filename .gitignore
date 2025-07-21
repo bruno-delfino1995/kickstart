@@ -1,4 +1,17 @@
-# Ansible
-*.retry
-vendor/
-host_vars/localhost.yml
+# Repo specific
+hosts_data/*
+!hosts_data/example.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+
+# C extensions
+*.so
+
+# Environments
+.venv
+
+# Caches
+.ruff_cache

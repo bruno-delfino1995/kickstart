@@ -1,4 +1,5 @@
 from pyinfra import host
+from pyinfra.facts.server import User
 from pyinfra.operations import pacman, server, systemd
 
 pacman.packages(
@@ -15,10 +16,12 @@ systemd.service(
     running=True,
 )
 
+user = host.get_fact(User)
+
 server.user(
     name="Add user to docker group",
     _sudo=True,
-    user=host.data.get("user").get("name"),
+    user=user,
     groups=["docker"],
     append=True,
 )

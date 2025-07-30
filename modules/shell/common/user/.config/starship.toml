@@ -7,6 +7,7 @@ format = """\
 	$git_branch\
 	$git_state\
 	$git_status\
+	$python\
 	$kubernetes\
 	$cmd_duration\
 	$line_break\
@@ -48,6 +49,12 @@ disabled = false
 [git_status]
 disabled = false
 format = '([\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style) )'
+
+## Languages
+
+[python]
+disabled = false
+format = 'via [${symbol}(${version} )(\($virtualenv\) )]($style)'
 
 ## Infrastructure
 

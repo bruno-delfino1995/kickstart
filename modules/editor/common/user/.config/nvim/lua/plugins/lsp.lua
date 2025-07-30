@@ -5,11 +5,6 @@ return {
     config = true,
   },
 
-  -- bridge the gap between lsp client and lsp server installation
-  {
-    'williamboman/mason-lspconfig.nvim',
-  },
-
   -- enable LSP
   'neovim/nvim-lspconfig',
 

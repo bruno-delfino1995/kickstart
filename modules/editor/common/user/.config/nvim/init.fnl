@@ -10,12 +10,11 @@
     :defaults {:lazy false} :git {:timeout 120}
     :spec [[:udayvir-singh/tangerine.nvim]
            [:udayvir-singh/hibiscus.nvim]
-        ;    {:import (.. (vim.fn.stdpath "data") "/tangerine")}
            {:import "plugins"}]})
 
 (require "user.neovide")
 (require "user.options")
 (require "user.keymaps")
-; (require "user.lsp")
+(require "user.lsp")
 
 {}

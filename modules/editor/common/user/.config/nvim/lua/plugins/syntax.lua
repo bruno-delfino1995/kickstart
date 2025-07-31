@@ -54,9 +54,9 @@ return {
       local configs = require('nvim-treesitter.configs')
 
       configs.setup({
-        ensure_installed = 'all', -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+        ensure_installed = { }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
         sync_install = false,     -- install languages synchronously (only applied to `ensure_installed`)
-        ignore_install = { 'org' },  -- list of parsers to ignore installing
+        ignore_install = { },  -- list of parsers to ignore installing
         highlight = {
           enable = true,          -- false will disable the whole extension
           disable = { '' },       -- list of language that will be disabled
@@ -79,9 +79,6 @@ return {
       })
     end,
   },
-
-  -- match delimiters with colors
-  'p00f/nvim-ts-rainbow',
 
   -- don't leave your delimiters alone, integrates with both cmp and treesitter
   {
@@ -111,15 +108,4 @@ return {
 
   -- put end after do in elixir/ruby
   'tpope/vim-endwise',
-
-  -- get your life together with plain text
-  {
-    'nvim-orgmode/orgmode',
-    event = 'VeryLazy',
-    ft = { 'org' },
-    opts = {
-      org_agenda_files = '~/org/**/*',
-      org_default_notes_file = '~/org/refile.org',
-    },
-  }
 }

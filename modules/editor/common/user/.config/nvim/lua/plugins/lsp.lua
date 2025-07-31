@@ -1,12 +1,23 @@
 return {
+  -- enable LSP
+  'neovim/nvim-lspconfig',
+
   -- simple to use package installer
   {
     'williamboman/mason.nvim',
     config = true,
   },
 
-  -- enable LSP
-  'neovim/nvim-lspconfig',
+
+  -- connect mason to lspconfig and enable servers
+  {
+      "mason-org/mason-lspconfig.nvim",
+      opts = {},
+      dependencies = {
+          { "mason-org/mason.nvim", opts = {} },
+          "neovim/nvim-lspconfig",
+      },
+  },
 
   -- list your tokens in a side buffer
   {

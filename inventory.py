@@ -15,7 +15,7 @@ def get_data(host: str) -> Dict[str, Any]:
                        or empty dictionary if loading fails
     """
     try:
-        module_name = f"hosts_data.{host}"
+        module_name = f"host_data.{host}"
         module = importlib.import_module(module_name)
 
         return {k: v for k, v in module.__dict__.items() if not k.startswith("__")}

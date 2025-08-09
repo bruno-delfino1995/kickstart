@@ -1,6 +1,6 @@
 # Repo specific
-hosts_data/*
-!hosts_data/example.py
+host_data/*
+!host_data/example.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

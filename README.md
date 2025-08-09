@@ -1,8 +1,10 @@
-# Kickstart my +heart+ environment
+# Kickstart my ~~heart~~ environment
 
-> Ansible playbook used to set up my machine from scratch
+> Configure your fresh machine with Python 🔥🐍
 
-You can clone this repository, check the default configuration at `group_vars/all.yml` and select only the ones you want in `host_vars/localhost.yml`. After you configure the variables to your preferences, all that's left is to run `./setup -k kind -m module`, which will install everything that I use on a daily basis.
+You can clone this repository, check the example configuration at `host_data/example.py`, select only the ones you want in `host_data/local.py`. After you configure the variables to your preferences, all that's left is to run `pyinfra inventory.py deploy.py`, which will install everything that I use on a daily basis.
+
+It's actually more than that 😅 You'll need to install Python through mise, install dependencies, and only then run the above command. In doubt, you're better off checking one the post installation steps from one of the [guides](./guides).
 
 ## LICENSE
 

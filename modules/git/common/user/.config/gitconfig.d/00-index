@@ -7,4 +7,5 @@
 	path = "04-log"
 	path = "05-commit"
 	path = "06-diff"
+	path = "07-housekeeping"
 	path = "90-company"

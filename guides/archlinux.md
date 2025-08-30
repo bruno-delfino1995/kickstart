@@ -2,7 +2,7 @@
 
 ## Creating the bootable media
 
-- Download an ISO for [Arch](https://archlinux.org/download/)
+- Download an ISO for [Arch Linux](https://archlinux.org/download/)
 
 - Verify its signature
 
@@ -10,24 +10,25 @@
 $ sha1sum archlinux-version-x86_64.iso
 ```
 
-- Create a bootable USB with<br />
+- Create a bootable USB with
+
 ```
 $ dd bs=4M conv=fsync oflag=direct status=progress \
   if=path/to/archlinux-version-x86_64.iso \
   of=/dev/sdx 
 ```
 
-- Insert the USB stick and let start the installation process
+- Insert the USB stick and let's start the installation process
 
 ## Preparing for installation
 
-- Start a TMUX session so you can run multiple commands
+- Tip: You can use a TMUX session so you can run multiple commands in case you get stuck
 
 ```
 # tmux new -s shell -c $HOME
 ```
 
-- Setup the correct keyboard layout by loading it using
+- Set up the correct keyboard layout by loading it using
 
 ```
 # localectl list-keymaps | grep -i <keymap>
@@ -68,13 +69,13 @@ $ dd bs=4M conv=fsync oflag=direct status=progress \
 
 ## Formatting the hard drive
 
-We're going to create our partitions while following the below recommendations
+We're going to create our partitions while following the recommendations below:
 
-- Leave an empty space at the beginning, usually 1MiB, for [alignment](https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/)
-- Use multiples of disk sectors when specifying partition sizes. As they're normally 512B, we'll be using IEC binary units of at least [1MiB](https://wiki.archlinux.org/title/Parted#Rounding)
+- Leave a space at the beginning, usually 1MiB, for [alignment](https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/)
+- Use multiples of disk sectors when specifying partition sizes. As they're typically 512B, we'll be using IEC binary units of at least [1MiB](https://wiki.archlinux.org/title/Parted#Rounding)
 - Create a partition of [550MiB](https://superuser.com/a/1310938) for EFI
 - Create one partition for swap according to your [requirements](https://itsfoss.com/swap-size/)
-- Create another partition for your system with remaining space
+- Create another partition for your system with the remaining space
 
 With your numbers at hand, start cracking:
 
@@ -124,15 +125,16 @@ With your numbers at hand, start cracking:
 
 ## Installing the base system
 
-- Mount root and EFI partition on /mnt and initialize the base system on it
+- Mount the system and EFI partitions on /mnt and bootstrap the minimal packages on it
 
 ```
 # mount "${DISK}3" /mnt
+# mkdir /mnt/boot
 # mount "${DISK}1" /mnt/boot
 # pacstrap /mnt linux linux-firmware base base-devel zsh tmux neovim
 ```
 
-- Enter the mount for your hard drive and start the process
+- Enter the mount for your hard drive and start the process in another tmux session
 
 ```
 # arch-chroot /mnt
@@ -150,7 +152,7 @@ With your numbers at hand, start cracking:
 # hwclock --systohc --utc
 ```
 
-- Setup users, passwords, groups, and sudo
+- Set up users, passwords, groups, and sudo
 
 ```
 # passwd
@@ -159,11 +161,11 @@ With your numbers at hand, start cracking:
 # nvim /etc/sudoers # enable the wheel group
 ```
 
-- Configure a bootloader for your architecture on the boot directory
+- Configure a bootloader for your architecture in the boot directory
 
 ```
 # pacman -S grub efibootmgr mkinitcpio
-# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
+# grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="Linux Boot Manager" --recheck
 # mkinitcpio -p linux
 # grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -194,7 +196,7 @@ Now reboot the system and check if everything is working!
 $ loadkeys <keymap>
 ```
 
-- Start your network connection with network manager
+- Start a network connection with the network manager
 
 ```
 $ nmtui

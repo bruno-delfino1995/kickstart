@@ -21,7 +21,7 @@ pacman.packages(
 pacman.packages(
     name="Install file helpers",
     _sudo=True,
-    packages=["fd", "fzf", "ripgrep", "ranger"],
+    packages=["fd", "fzf", "ripgrep", "tree", "ranger"],
 )
 
 pacman.packages(
@@ -47,5 +47,23 @@ pacman.packages(
 pacman.packages(
     name="Install usage helper",
     _sudo=True,
-    packages=["tldr"],
+    packages=["man-db", "man-pages", "tldr"],
+)
+
+pacman.packages(
+    name="Install compression tools",
+    _sudo=True,
+    packages=["zip", "unzip"]
+)
+
+pacman.packages(
+    name="Install network clients",
+    _sudo=True,
+    packages=["curl", "wget"]
+)
+
+pacman.packages(
+    name="Install common utilities",
+    _sudo=True,
+    packages=["moreutils"]
 )

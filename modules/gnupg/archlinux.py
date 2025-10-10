@@ -1,8 +1,8 @@
 from pyinfra import host
-from pyinfra.operations import pacman, server, systemd
+from pyinfra.operations import files, pacman, server, systemd
 
 pacman.packages(
-    name="Install GNUPG",
+    name="Install GnuPG tools",
     _sudo=True,
     packages=["gnupg"],
 )
@@ -10,7 +10,7 @@ pacman.packages(
 pacman.packages(
     name="Install SmartCard tools",
     _sudo=True,
-    packages=["opensc", "ccid"],
+    packages=["pcsclite", "ccid", "yubikey-personalization"],
 )
 
 systemd.service(
@@ -22,6 +22,13 @@ systemd.service(
 )
 
 # aur.packages(name="Install pinentry", packages=["pinentry-rofi"])
+
+files.link(
+    name="Link pinentry",
+    _sudo=True,
+    path="/usr/local/bin/pinentry-proxy",
+    target="/usr/bin/pinentry-rofi",
+)
 
 server.shell(
     name="Import public key",

@@ -12,9 +12,17 @@ pacman.packages(
         "swaybg",
         "waybar",
         "wl-clipboard",
+    ],
+)
+
+pacman.packages(
+    name="Install base XDG packages",
+    _sudo=True,
+    packages=[
+        "xdg-user-dirs",
         "xdg-desktop-portal-gtk",
         "xdg-desktop-portal-wlr",
-    ],
+    ]
 )
 
 pacman.packages(
@@ -46,3 +54,7 @@ pacman.packages(
     _sudo=True,
     packages=["network-manager-applet"],
 )
+
+pacman.packages(name="Install audio GUI", _sudo=True, packages=["pavucontrol"])
+
+pacman.packages(name="Install bluetooth GUI", _sudo=True, packages=["blueman"])

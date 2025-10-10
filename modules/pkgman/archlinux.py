@@ -40,3 +40,5 @@ systemd.service(
     enabled=True,
     running=True,
 )
+
+# aur.packages(name="Install AUR helper", packages=["paru"], use="makepkg")

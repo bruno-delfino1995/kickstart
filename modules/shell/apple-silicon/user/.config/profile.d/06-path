@@ -2,9 +2,10 @@
 
 export GOPATH="$HOME/.go"
 export GEM_HOME=$(ruby -e "puts Gem.user_dir")
+export CARGO_HOME="$HOME/.cargo"
+export LOCAL_HOME="$HOME/.local"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:$GEM_HOME/bin"
-
+export PATH="$LOCAL_HOME/bin:$CARGO_HOME/bin:$GOPATH/bin:$GEM_HOME/bin:$PATH"
 
 # LibPQ configs
 # Configure libpq early in the path

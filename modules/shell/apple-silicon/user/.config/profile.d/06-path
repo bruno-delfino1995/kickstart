@@ -6,15 +6,16 @@ export GEM_HOME=$(ruby -e "puts Gem.user_dir")
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$GOPATH/bin:$GEM_HOME/bin"
 
 
+# LibPQ configs
 # Configure libpq early in the path
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+# export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-# For compilers to find libpq:
-export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+# For compilers to find libpq
+# export LDFLAGS="-L/opt/homebrew/opt/libpq/lib $LDFLAGS"
+# export CPPFLAGS="-I/opt/homebrew/opt/libpq/include $CPPFLAGS"
 
-# For pkg-config to find libpq:
-export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+# For pkg-config to find libpq
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # Replace macOS coreutils commands with uutils coreutils
 export PATH="/opt/homebrew/opt/uutils-coreutils/libexec/uubin:$PATH"

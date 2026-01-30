@@ -10,8 +10,6 @@
 
 # Environment setup
 .mise.local.toml
-.envrc
-.env
 
 # Docker
 docker-compose.override.yml

@@ -14,3 +14,6 @@ Repository = "https://github.com/bruno-delfino1995/kickstart"
 dev = [
     "ruff>=0.12.4",
 ]
+
+[tool.uv.sources]
+pyinfra = { path = "../pyinfra", editable = true }

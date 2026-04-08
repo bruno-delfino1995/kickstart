@@ -293,7 +293,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pyinfra", specifier = ">=3.4.1" }]
+requires-dist = [{ name = "pyinfra", editable = "../pyinfra" }]
 
 [package.metadata.requires-dev]
 dev = [{ name = "ruff", specifier = ">=0.12.4" }]
@@ -370,8 +370,7 @@ wheels = [
 
 [[package]]
 name = "pyinfra"
-version = "3.4.1"
-source = { registry = "https://pypi.org/simple" }
+source = { editable = "../pyinfra" }
 dependencies = [
     { name = "click" },
     { name = "distro" },
@@ -383,10 +382,68 @@ dependencies = [
     { name = "pywinrm" },
     { name = "typeguard" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/43/94/947e8a9781dd7ec53ecdca91d11112364444daa92d068f98ea4c387f1203/pyinfra-3.4.1.tar.gz", hash = "sha256:3778bc06879c08605ac65cf288a5e64aaa58e7339e3c449e3a5e8b744d241883", size = 220837, upload-time = "2025-07-14T20:31:29.631Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/03/d2/44a4a71483c76a4f3db76ccb7d115a9307568d1cbde3505b3e7e8a598092/pyinfra-3.4.1-py2.py3-none-any.whl", hash = "sha256:46606c31e2726705de8c2cbfc034b0a716dbcc5e9c1194409e9a003fd9f4318c", size = 281569, upload-time = "2025-07-14T20:31:27.664Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "black", marker = "extra == 'dev'", specifier = "==25.1.0" },
+    { name = "black", marker = "extra == 'test'", specifier = "==25.1.0" },
+    { name = "click", specifier = ">2" },
+    { name = "click", marker = "extra == 'dev'", specifier = ">=8.2" },
+    { name = "click", marker = "extra == 'test'", specifier = ">=8.2" },
+    { name = "coverage", marker = "extra == 'dev'", specifier = "==7.7.1" },
+    { name = "coverage", marker = "extra == 'test'", specifier = "==7.7.1" },
+    { name = "distro", specifier = ">=1.6,<2" },
+    { name = "flake8", marker = "extra == 'dev'", specifier = "==7.1.2" },
+    { name = "flake8", marker = "extra == 'test'", specifier = "==7.1.2" },
+    { name = "flake8-black", marker = "extra == 'dev'", specifier = "==0.3.6" },
+    { name = "flake8-black", marker = "extra == 'test'", specifier = "==0.3.6" },
+    { name = "flake8-isort", marker = "extra == 'dev'", specifier = "==6.1.2" },
+    { name = "flake8-isort", marker = "extra == 'test'", specifier = "==6.1.2" },
+    { name = "flake8-spellcheck", marker = "extra == 'dev'", specifier = "==0.28.0" },
+    { name = "gevent", specifier = ">=1.5" },
+    { name = "graphlib-backport", marker = "python_full_version < '3.9'" },
+    { name = "importlib-metadata", marker = "python_full_version < '3.10'", specifier = ">=3.6" },
+    { name = "ipdb", marker = "extra == 'dev'" },
+    { name = "ipdbplugin", marker = "extra == 'dev'" },
+    { name = "ipython", marker = "extra == 'dev'" },
+    { name = "isort", marker = "extra == 'dev'", specifier = "==6.0.1" },
+    { name = "isort", marker = "extra == 'test'", specifier = "==6.0.1" },
+    { name = "jinja2", specifier = ">2,<4" },
+    { name = "mypy", marker = "extra == 'dev'" },
+    { name = "mypy", marker = "extra == 'test'" },
+    { name = "myst-parser", marker = "extra == 'dev'", specifier = "==4.0.1" },
+    { name = "myst-parser", marker = "extra == 'docs'", specifier = "==4.0.1" },
+    { name = "packaging", specifier = ">=16.1" },
+    { name = "paramiko", specifier = ">=2.7,<4" },
+    { name = "pyinfra-guzzle-sphinx-theme", marker = "extra == 'dev'", specifier = "==0.17" },
+    { name = "pyinfra-guzzle-sphinx-theme", marker = "extra == 'docs'", specifier = "==0.17" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = "==8.3.5" },
+    { name = "pytest", marker = "extra == 'test'", specifier = "==8.3.5" },
+    { name = "pytest-cov", marker = "extra == 'dev'", specifier = "==6.0.0" },
+    { name = "pytest-cov", marker = "extra == 'test'", specifier = "==6.0.0" },
+    { name = "pytest-testinfra", marker = "extra == 'dev'", specifier = "==10.2.2" },
+    { name = "pytest-testinfra", marker = "extra == 'test'", specifier = "==10.2.2" },
+    { name = "python-dateutil", specifier = ">2,<3" },
+    { name = "pywinrm" },
+    { name = "pyyaml", marker = "extra == 'dev'", specifier = "==6.0.2" },
+    { name = "pyyaml", marker = "extra == 'test'", specifier = "==6.0.2" },
+    { name = "redbaron", marker = "extra == 'dev'" },
+    { name = "sphinx", marker = "extra == 'dev'", specifier = "==8.2.3" },
+    { name = "sphinx", marker = "extra == 'docs'", specifier = "==8.2.3" },
+    { name = "twine", marker = "extra == 'dev'" },
+    { name = "typeguard" },
+    { name = "types-cryptography", marker = "extra == 'dev'" },
+    { name = "types-cryptography", marker = "extra == 'test'" },
+    { name = "types-paramiko", marker = "extra == 'dev'", specifier = "<4" },
+    { name = "types-paramiko", marker = "extra == 'test'", specifier = "<4" },
+    { name = "types-python-dateutil", marker = "extra == 'dev'" },
+    { name = "types-python-dateutil", marker = "extra == 'test'" },
+    { name = "types-pyyaml", marker = "extra == 'dev'" },
+    { name = "types-pyyaml", marker = "extra == 'test'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "wheel", marker = "extra == 'dev'" },
 ]
+provides-extras = ["test", "docs", "dev"]
 
 [[package]]
 name = "pynacl"

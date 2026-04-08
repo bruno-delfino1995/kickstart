@@ -2,9 +2,7 @@ from pyinfra.operations import flatpak, pacman
 
 pacman.packages(name="Install browser", _sudo=True, packages=["firefox"])
 
-# aur.packages(name="Install password manager", packages=["enpass-bin"])
-
-pacman.packages(name="Install terminal emulator", _sudo=True, packages=["wezterm"])
+pacman.packages(name="Install terminal emulator", _sudo=True, packages=["ghostty"])
 
 pacman.packages(name="Install flatpak", _sudo=True, packages=["flatpak"])
 

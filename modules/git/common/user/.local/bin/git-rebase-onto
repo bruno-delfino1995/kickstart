@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+git rebase --onto "$1" "$2" "$(git rev-parse --abbrev-ref HEAD)"

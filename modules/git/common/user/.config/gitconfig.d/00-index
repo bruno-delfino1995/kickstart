@@ -8,4 +8,4 @@
 	path = "05-commit"
 	path = "06-diff"
 	path = "07-housekeeping"
-	path = "90-company"
+	path = "99-local"

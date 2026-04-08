@@ -1,5 +1,7 @@
 # vim: set ft=gitconfig:
 
+[core]
+	sshCommand = "~/.local/bin/git-ssh"
 [alias]
 	please = push --force-with-lease
 	remove-gone = !git branch -D `git branch -v | grep '\\[gone\\]' | awk '{print($1)}'`

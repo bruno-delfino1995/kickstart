@@ -1,0 +1,29 @@
+#!/bin/bash
+
+owner=$(
+  printf '%s\n' "$@" | \
+  awk -f <(cat - <<'EOT'
+    BEGIN { has_git = 0; owner = "" } {
+      # Detect git-* command
+      if ($0 ~ /^git-.+$/) has_git = 1
+
+      # Extract owner from .git path
+      if ($0 ~ /\.git/) {
+        if (match($0, /'.*\.git'/)) {
+          path = substr($0, RSTART + 1, RLENGTH - 1)
+          owner = path
+          # The first path segment gives the "owner" context
+          sub(/\/.*/, "", owner)
+        }
+      }
+    } END {
+      if (has_git && owner != "") print owner
+    }
+EOT
+))
+
+if [ -n "$owner" ] && [ -f "$HOME/.ssh/keys/${owner}.pub" ]; then
+  exec ssh -F /dev/null -i "$HOME/.ssh/keys/${owner}.pub" "$@"
+else
+  exec ssh "$@"
+fi

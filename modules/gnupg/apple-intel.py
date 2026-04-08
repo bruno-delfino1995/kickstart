@@ -4,6 +4,6 @@ files.link(
     name="Link pinentry",
     _sudo=True,
     path="/usr/local/bin/pinentry-proxy",
-    target="/opt/homebrew/bin/pinentry-mac",
+    target="/usr/local/bin/pinentry-mac",
 )
 

@@ -46,36 +46,47 @@ return {
   -- language parsing from the future
   {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = 'ts_context_commentstring',
-    build = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
-    end,
+    branch = 'main',
+    lazy = false,
+    build = ':TSUpdate',
     config = function()
-      local configs = require('nvim-treesitter.configs')
+      local install_dir = vim.fn.stdpath('data') .. '/site'
+      vim.opt.runtimepath:append(install_dir)
 
-      configs.setup({
-        ensure_installed = { }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-        sync_install = false,     -- install languages synchronously (only applied to `ensure_installed`)
-        ignore_install = { 'org' },  -- list of parsers to ignore installing
-        highlight = {
-          enable = true,          -- false will disable the whole extension
-          disable = { '' },       -- list of language that will be disabled
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false,
-        },
-        indent = {
-          enable = true,
-          disable = { '' },
-        },
-        rainbow = {
-          enable = true,
-          disable = { '' },     -- list of languages you want to disable the plugin for
-          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-          max_file_lines = nil, -- Do not enable for files with more than n lines, int
-        },
+      local ts = require('nvim-treesitter')
+      ts.setup({ install_dir = install_dir })
+
+      -- Parsers to install at startup (empty for all; no-op if already present)
+      local ensure_installed = { }
+      ts.install(ensure_installed)
+
+      vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup('treesitter-setup', { clear = true }),
+        callback = function(ev)
+          local buf = ev.buf
+          local lang = vim.treesitter.language.get_lang(ev.match)
+          if not lang then
+            return
+          end
+
+          if not pcall(vim.treesitter.language.add, lang) then
+            -- Parser not installed: trigger a non-blocking background install.
+            -- Highlighting will work on the next buffer open for this filetype.
+            ts.install({ lang })
+            return
+          end
+
+          -- pcall guards against filetypes where language.add succeeds but no
+          -- usable parser exists (e.g. fzf-lua's "fzf" filetype).
+          if not pcall(vim.treesitter.start, buf, lang) then
+            return
+          end
+
+          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          vim.wo[0][0].foldmethod = 'expr'
+          vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo[0][0].foldlevel = 99
+        end,
       })
     end,
   },

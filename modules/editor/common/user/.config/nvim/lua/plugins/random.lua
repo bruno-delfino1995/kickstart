@@ -20,13 +20,6 @@ return {
     config = true,
   },
 
-  -- jump around your finds like a kangaroo
-  {
-    'ggandor/flit.nvim',
-    dependencies = 'ggandor/leap.nvim',
-    config = true,
-  },
-
   -- basic configs for better experience
   'tpope/vim-sensible',
 

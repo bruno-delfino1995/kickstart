@@ -36,7 +36,12 @@ docker-compose.override.yml
 
 ## Elixir
 .elixir_ls/
+.lexical/
 
 ## Scala
 .metals/
 .bloop/
+
+# Agents
+.claude/
+.cursor/

@@ -1,0 +1,32 @@
+{
+  "profiles": [
+    {
+      "name": "Default",
+      "complex_modifications": {
+        "parameters": { "basic.to_if_alone_timeout_milliseconds": 200 }
+      },
+      "devices": [
+        {
+          "simple_modifications": [
+            {
+              "from": { "key_code": "caps_lock" },
+              "to": [{ "key_code": "escape" }]
+            },
+            {
+              "from": { "key_code": "escape" },
+              "to": [{ "key_code": "caps_lock" }]
+            },
+            {
+              "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
+              "to": [{ "key_code": "left_control" }]
+            },
+            {
+              "from": { "key_code": "left_control" },
+              "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

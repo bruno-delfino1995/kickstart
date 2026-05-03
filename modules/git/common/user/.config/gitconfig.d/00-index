@@ -1,7 +1,7 @@
 # vim: set ft=gitconfig:
 
 [include]
-	path = "01-gnupg"
+	path = "01-sign"
 	path = "02-remote"
 	path = "03-merge"
 	path = "04-log"
@@ -9,3 +9,6 @@
 	path = "06-diff"
 	path = "07-housekeeping"
 	path = "99-local"
+
+[includeIf "hasconfig:remote.*.url:git@*:bruno-delfino1995/**"]
+	path = "users/bruno-delfino1995"

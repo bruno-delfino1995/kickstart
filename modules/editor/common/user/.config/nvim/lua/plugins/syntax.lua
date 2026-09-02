@@ -57,7 +57,7 @@ return {
       ts.setup({ install_dir = install_dir })
 
       -- Parsers to install at startup (empty for all; no-op if already present)
-      local ensure_installed = { }
+      local ensure_installed = { 'lua' }
       ts.install(ensure_installed)
 
       vim.api.nvim_create_autocmd('FileType', {

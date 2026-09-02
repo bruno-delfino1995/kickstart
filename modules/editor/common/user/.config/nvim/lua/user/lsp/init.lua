@@ -14,3 +14,5 @@ vim.lsp.config('*', {
 vim.lsp.config.rust_analyzer.on_attach = handlers.on_attach
 vim.lsp.config.lexical.on_attach = handlers.on_attach
 vim.lsp.config.gopls.on_attach = handlers.on_attach
+vim.lsp.config.ts_ls.on_attach = handlers.on_attach
+vim.lsp.config.zls.on_attach = handlers.on_attach

@@ -4,6 +4,7 @@ export GOPATH="$HOME/.go"
 export GEM_HOME=$(ruby -e "puts Gem.user_dir")
 export CARGO_HOME="$HOME/.cargo"
 export LOCAL_HOME="$HOME/.local"
+export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
 
 # Export psql from libpq
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"

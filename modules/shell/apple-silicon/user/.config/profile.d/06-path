@@ -5,7 +5,12 @@ export GEM_HOME=$(ruby -e "puts Gem.user_dir")
 export CARGO_HOME="$HOME/.cargo"
 export LOCAL_HOME="$HOME/.local"
 
-export PATH="$LOCAL_HOME/bin:$CARGO_HOME/bin:$GOPATH/bin:$GEM_HOME/bin:$PATH"
+# Export psql from libpq
+PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+PATH="$LOCAL_HOME/bin:$CARGO_HOME/bin:$GOPATH/bin:$GEM_HOME/bin:$PATH"
 
 # Replace macOS coreutils commands with uutils coreutils
-export PATH="/opt/homebrew/opt/uutils-coreutils/libexec/uubin:$PATH"
+PATH="/opt/homebrew/opt/uutils-coreutils/libexec/uubin:$PATH"
+
+export PATH

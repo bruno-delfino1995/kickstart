@@ -45,3 +45,8 @@ docker-compose.override.yml
 # Agents
 .claude/
 .cursor/
+.gemini/
+
+## Skills
+.superpowers/
+docs/superpowers/

@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-# Exit when in Tmux already and no-session specified
-if [ -z "$1" && -n "$TMUX" ]; then
-  exit 0
-fi
-
 if [ -n "$1" ]; then
-  if [ -z "$(tmux list-sessions | cut -f 1 -d ':' | grep "$1")" ]; then
+  if [ -z "$(tmux list-sessions 2>/dev/null | cut -f 1 -d ':' | grep "$1")" ]; then
     tmux new -s "$1" -c "${2:-$HOME}" -d
   fi
 
@@ -17,8 +12,13 @@ if [ -n "$1" ]; then
   exec tmux a -d -t "$1"
 fi
 
+# Exit when in Tmux already and no-session specified
+if [ -n "$TMUX" ]; then
+  exit 0
+fi
+
 # Attaches to whatever session if there's any
-if [ -n "$(tmux list-sessions)" ]; then
+if [ -n "$(tmux list-sessions 2>/dev/null)" ]; then
   exec tmux a -d 2>/dev/null
 fi
 

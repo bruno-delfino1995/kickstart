@@ -9,8 +9,14 @@ setopt HIST_IGNORE_SPACE
 
 zstyle :compinstall filename "$HOME/.zshrc"
 
+# Reuse the cached completion dump when it is less than a day old; only pay for
+# the full audit and rebuild once a day
 autoload -Uz compinit colors promptinit
-compinit
+if [[ -n ${HOME}/.zcompdump(#qN.mh-24) ]]; then
+  compinit -C
+else
+  compinit
+fi
 colors
 promptinit
 
